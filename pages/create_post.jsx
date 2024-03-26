@@ -8,7 +8,19 @@ import styles from "../styles/CreateForm.module.css";
 const CreateForm = () => {
     const [title, setTitle] = useState("");
     const [image, setImage] = useState(null);
+    const [previewURL, setPreviewURL] = useState(null); // 追加: プレビュー画像のURLを保持するステート
+
     const router = useRouter();
+
+    // プレビュー画像情報の取得
+    const handleImageChange = (e) => {
+        const selectedImage = e.target.files[0];
+        setImage(selectedImage);
+        if (selectedImage) {
+            const imageURL = URL.createObjectURL(selectedImage);
+            setPreviewURL(imageURL);
+        }
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -30,24 +42,38 @@ const CreateForm = () => {
 
     return (
         <div className={styles.createContainer}>
+            <div>ユーザー情報を表示</div>
             <form className={styles.createForm} onSubmit={handleSubmit}>
-                <label className={styles.createLabel}>
-                    写真をアップロード:
-                    <input
-                        type="file"
-                        accept="image/*" // アップロードできる画像ファイルのみを表示するように設定
-                        onChange={(e) => setImage(e.target.files[0])} // 1つの画像ファイルのみ選択できるように設定
-                    />
-                </label>
-
-                <label className={styles.createTitle}>
-                    写真のタイトル:
-                    <input
-                        type="text"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                    />
-                </label>
+                <div>
+                    <label className={styles.createLabel}>
+                        写真をアップロード:
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={handleImageChange} // 修正: handleImageChangeを使用するように修正
+                        />
+                    </label>
+                </div>
+                {/* プレビューを表示 */}
+                {previewURL && (
+                    <div>
+                        <img
+                            src={previewURL}
+                            alt="画像プレビュー"
+                            className={styles.imagePreview}
+                        />
+                    </div>
+                )}
+                <div>
+                    <label className={styles.createTitle}>
+                        写真のタイトル:
+                        <input
+                            type="text"
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                        />
+                    </label>
+                </div>
 
                 <button type="submit" className={styles.btnCreate}>
                     投稿ボタン
