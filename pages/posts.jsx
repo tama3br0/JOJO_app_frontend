@@ -35,6 +35,18 @@ const Posts = () => {
         fetchPosts();
     }, []); // ←第二引数の[]がないと、Post.allが無限にリロードされました
 
+    // const handleDelete = async (postId) => {
+    //     try {
+    //         if (confirm("本当に削除しますか？")) {
+    //             await axios.delete(`http://localhost:3000/api/posts/${postId}`);
+    //             // 削除に成功したらリロード
+    //             router.reload();
+    //         }
+    //     } catch (error) {
+    //         alert("削除に失敗しました");
+    //     }
+    // };
+
     return (
         <div className={styles.posts}>
             <h1>投稿一覧</h1>
@@ -51,6 +63,12 @@ const Posts = () => {
                             </div>
                             <h2>{post.title}</h2>
                         </Link>
+                        {/* <button
+                            className={styles.btnDelete}
+                            onClick={() => handleDelete(post.id)}
+                        >
+                            削除
+                        </button> */}
                     </div>
                 ))}
             </div>

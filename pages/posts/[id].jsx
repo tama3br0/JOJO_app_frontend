@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import Link from "next/link";
+import CommentForm from "../../components/post/commentForm";
+import CommentList from "../../components/post/commentList";
 
 // 谷宮さんに実装してもらうための準備
 import styles from "@/styles/Show.module.css";
@@ -27,24 +29,32 @@ export async function getStaticProps({ params }) {
     const res = await fetch(`http://localhost:3000/api/posts/${params.id}`);
     const post = await res.json();
 
+    // コメントデータを取得する
+    const commentsRes = await fetch(
+        `http://localhost:3000/api/posts/${params.id}/comments`
+    );
+    const comments = await commentsRes.json();
+
     return {
         props: {
             post,
+            comments,
         },
         revalidate: 60, // 1分ごとに設定
     };
 }
 
-const Show = ({ post }) => {
+const Show = ({ post, comments }) => {
     const title = post.title;
     const image = post.image.url;
+    const router = useRouter();
 
     const handleDelete = async (postId) => {
         try {
             if (confirm("本当に削除しますか？")) {
                 await axios.delete(`http://localhost:3000/api/posts/${postId}`);
-                // 削除に成功したらリロード
-                router.reload();
+                // 削除に成功したら一覧ページへ
+                router.push("/");
             }
         } catch (error) {
             alert("削除に失敗しました");
@@ -69,6 +79,12 @@ const Show = ({ post }) => {
             >
                 削除
             </button>
+            <div className={styles.comment}>
+                {/* コメントフォーム */}
+                <CommentForm postId={parseInt(post.id)} />
+                {/* コメントリスト */}
+                <CommentList comments={comments} />
+            </div>
         </div>
     );
 };
