@@ -8,7 +8,7 @@ import styles from "../styles/Home.module.css";
 import Header from "../components/header";
 import Footer from "../components/footer";
 
-// getStaticPropsが使えませんでした…
+// getStaticPropsが使えませんでした…と思ったら
 // export async function getStaticProps() {
 //     const res = await fetch("http://localhost:3000/api/posts");
 //     const posts = await res.json();
@@ -17,6 +17,7 @@ import Footer from "../components/footer";
 //             posts,
 //         },
 //     };
+//     revalidate: 60 * 60 * 24, // ←ここにrevalidateを書いていなかったから使えなかっただけでした…
 // }
 
 const Posts = () => {
@@ -52,11 +53,14 @@ const Posts = () => {
             <div className={styles.postContainer}>
                 {posts.map((post) => (
                     <div key={post.id} className={styles.postItem}>
-                        <Link href="/">
+                        <Link href={`/posts/${post.id}`}>
                             <img
                                 src={`http://localhost:3000${post.image.url}`}
                                 alt={post.title}
                             />
+                            <div className={styles.postDate}>
+                                {post.created_at}
+                            </div>
                             <h2>{post.title}</h2>
                         </Link>
                         <button
