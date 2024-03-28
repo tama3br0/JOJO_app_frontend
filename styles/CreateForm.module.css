@@ -1,1 +1,46 @@
 /* create_post.jsxに関するCSS */
+
+.createContainer {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.createForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.createLabel {
+    font-size: 18px;
+    color: #333;
+}
+
+.createTitle input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.imagePreview {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.btnCreate {
+    background-color: #1da1f2;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btnCreate:hover {
+    background-color: #0d8bf0;
+}

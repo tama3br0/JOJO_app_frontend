@@ -1,1 +1,50 @@
-/* posts.jsxのCSS */
+/* Home.module.css */
+
+/* 投稿一覧を中央に配置 */
+.posts {
+    margin: 50px auto;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.posts h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* 投稿一覧のレイアウトをグリッドに */
+.postContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 20px;
+}
+
+.postItem {
+    position: relative;
+    cursor: pointer;
+}
+
+.postItem img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* 画像の角を丸める */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* 画像に影 */
+    transition: transform 0.3s ease-in-out; /* ホバー時に画像を拡大するアニメーション */
+}
+
+/* 画像ホバー時 */
+.postItem img:hover {
+    transform: scale(1.05); /* ホバー時に画像を拡大*/
+}
+
+/* 投稿日時のスタイル*/
+.postDate {
+    position: absolute; /* 絶対位置に配置しています */
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+}

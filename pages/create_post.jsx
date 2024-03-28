@@ -12,13 +12,61 @@ const CreateForm = () => {
 
     const router = useRouter();
 
+    // Canvas要素に画像を描画してリサイズする関数
+    const resizeImage = (image, maxWidth, maxHeight) => {
+        return new Promise((resolve, reject) => {
+            const canvas = document.createElement("canvas");
+            const context = canvas.getContext("2d");
+
+            const img = new Image();
+            img.onload = () => {
+                let width = img.width;
+                let height = img.height;
+
+                if (width > height) {
+                    if (width > maxWidth) {
+                        height *= maxWidth / width;
+                        width = maxWidth;
+                    }
+                } else {
+                    if (height > maxHeight) {
+                        width *= maxHeight / height;
+                        height = maxHeight;
+                    }
+                }
+
+                canvas.width = width;
+                canvas.height = height;
+
+                context.drawImage(img, 0, 0, width, height);
+
+                resolve(canvas.toDataURL("image/jpeg")); // リサイズ後の画像をDataURL形式で返す
+            };
+
+            img.onerror = (error) => {
+                reject(error);
+            };
+
+            img.src = URL.createObjectURL(image);
+        });
+    };
+
     // プレビュー画像情報の取得
-    const handleImageChange = (e) => {
+    const handleImageChange = async (e) => {
         const selectedImage = e.target.files[0];
         setImage(selectedImage);
         if (selectedImage) {
-            const imageURL = URL.createObjectURL(selectedImage);
-            setPreviewURL(imageURL);
+            try {
+                const resizedImageURL = await resizeImage(
+                    selectedImage,
+                    400,
+                    400
+                ); // 幅400px、高さ400pxにリサイズ
+                setPreviewURL(resizedImageURL);
+            } catch (error) {
+                console.error("画像のリサイズ中にエラーが発生しました:", error);
+                setPreviewURL(null);
+            }
         }
     };
 

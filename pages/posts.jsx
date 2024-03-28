@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import axios from "axios";
+// import Ranking from "../components/ranking";
+// import Rank from "../components/rank";
 
 // 谷宮さんに実装してもらうための準備
 import styles from "../styles/Home.module.css";
-import Header from "../components/header";
 import Footer from "../components/footer";
 
 // getStaticPropsが使えませんでした…と思ったら
@@ -48,31 +49,33 @@ const Posts = () => {
     // };
 
     return (
-        <div className={styles.posts}>
-            <h1>投稿一覧</h1>
-            <div className={styles.postContainer}>
-                {posts.map((post) => (
-                    <div key={post.id} className={styles.postItem}>
-                        <Link href={`/posts/${post.id}`}>
-                            <img
-                                src={`http://localhost:3000${post.image.url}`}
-                                alt={post.title}
-                            />
-                            <div className={styles.postDate}>
-                                {post.created_at}
-                            </div>
-                            <h2>{post.title}</h2>
-                        </Link>
-                        {/* <button
+        <>
+            <div className={styles.posts}>
+                <h1>投稿一覧</h1>
+                <div className={styles.postContainer}>
+                    {posts.map((post) => (
+                        <div key={post.id} className={styles.postItem}>
+                            <Link href={`/posts/${post.id}`}>
+                                <img
+                                    src={`http://localhost:3000${post.image.url}`}
+                                    alt={post.title}
+                                />
+                                <div className={styles.postDate}>
+                                    {post.created_at}
+                                </div>
+                                {/* <h2>{post.title}</h2> */}
+                            </Link>
+                            {/* <button
                             className={styles.btnDelete}
                             onClick={() => handleDelete(post.id)}
                         >
                             削除
                         </button> */}
-                    </div>
-                ))}
+                        </div>
+                    ))}
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 
