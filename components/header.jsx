@@ -14,7 +14,7 @@ function Header() {
 
     return (
         <header className={styles.header}>
-            <button className={styles.leftButton}>一覧ページ</button>
+            <button className={styles.leftButton} onClick={() => router.push('/')}>一覧ページ</button>
             <div
                 className={`${styles.menuIcon} ${isMenuOpen ? "open" : ""}`}
                 onClick={toggleMenu}
