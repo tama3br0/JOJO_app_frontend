@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { loginUser } from '../utils/auth';
+import styles from '../styles/Login.module.css';
 
 const LoginPage = () => {
     const router = useRouter();
@@ -25,17 +26,20 @@ const LoginPage = () => {
     };
 
     return (
-        <div>
-            <form onSubmit={handleLogin}>
-                <div>
+        <div className={styles['login-container']}>
+            <div className={styles['logo-container']}>
+                <img src="/logo.png" alt="Logo" className={styles.logo} />
+            </div>
+            <form className={styles['login-form']} onSubmit={handleLogin}>
+                <div className={styles['form-group']}>
                     <label htmlFor="email">Email:</label>
                     <input type='email' id='email' value={email} onChange={(e) => setEmail(e.currentTarget.value)} required />
                 </div>
-                <div>
+                <div className={styles['form-group']}>
                     <label htmlFor="password">Password:</label>
                     <input type='password' id='password' value={password} onChange={(e) => setPassword(e.currentTarget.value)} required />
                 </div>
-                <button type='submit'>Login</button>
+                <button type='submit'>ウリイイイイヤアアアッー</button>
                 {error && <p>{error}</p>}
             </form>
         </div>
