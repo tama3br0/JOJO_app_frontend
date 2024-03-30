@@ -75,7 +75,7 @@ const CreateForm = () => {
 
         const formData = new FormData();
         formData.append("post[title]", title);
-        formData.append("post[image]", image, image.name);
+        formData.append("post[image]", image);
 
         // トークンを取得
         const token = localStorage.getItem("token");

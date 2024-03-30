@@ -1,12 +1,27 @@
 import axios from "axios";
 
 // コメントを投稿するためのサービス
-export const submitComment = async (comment) => {
+export const submitComment = async (postId, content) => {
+    const token = localStorage.getItem("token");
+
+    console.log("content:", content);
+
     try {
-        await axios.post(
-            `http://localhost:3000/api/posts/${comment.post_id}/comments`,
-            comment
+        const response = await axios.post(
+            `http://localhost:3000/api/posts/${postId}/comments`,
+            {
+                comment: {
+                    content: content.body,
+                },
+            },
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
         );
+        // サーバーからのレスポンスを返す場合
+        return response.data;
     } catch (error) {
         throw new Error("コメントの投稿に失敗しました");
     }
@@ -22,3 +37,5 @@ export const deleteComment = async (postId, commentId) => {
         throw new Error("コメントの削除に失敗しました");
     }
 };
+
+export default { submitComment, deleteComment };

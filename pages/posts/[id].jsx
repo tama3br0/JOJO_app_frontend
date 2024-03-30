@@ -8,7 +8,12 @@ import styles from "@/styles/Show.module.css";
 
 export async function getStaticPaths() {
     const res = await fetch("http://localhost:3000/api/posts");
+    // console.log("resの中身を確認:", res);
+
     const posts = await res.json();
+
+    // console.log("postsの中身を確認:", posts);
+
     const paths = posts.map((post) => {
         return {
             params: {
@@ -26,6 +31,8 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
     const res = await fetch(`http://localhost:3000/api/posts/${params.id}`);
     const post = await res.json();
+
+    // console.log("postの中身を確認:", post);
 
     // コメントデータを取得する
     const commentsRes = await fetch(

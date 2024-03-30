@@ -3,6 +3,7 @@ import styles from "../../styles/Comment.module.css";
 import { deleteComment } from "../../services/commentService";
 
 const CommentList = ({ comments }) => {
+    console.log("comments:", comments);
     // const handleDelete = async (postId, id) => {
     //     const confirmDelete = window.confirm("本当に削除しますか？");
     //     if (!confirmDelete) {
@@ -22,8 +23,12 @@ const CommentList = ({ comments }) => {
             <h3 className={styles.heading}>コメント一覧</h3>
             {comments.map((comment) => (
                 <div key={comment.id} className={styles.comment}>
-                    <p className={styles.content}>{comment.content}</p>
-                    <p className={styles.author}>By: {comment.author_name}</p>
+                    <p className={styles.content}>
+                        {JSON.parse(comment.content).content}
+                    </p>
+                    <p className={styles.author}>
+                        By: {JSON.parse(comment.content).author_name}
+                    </p>
                     {/* <button
                         onClick={() =>
                             handleDelete(comment.post_id, comment.id)

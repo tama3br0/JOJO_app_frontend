@@ -2,21 +2,35 @@ import React, { useState } from "react";
 import { submitComment } from "../../services/commentService";
 import styles from "../../styles/Comment.module.css";
 
-const CommentForm = ({ postId }) => {
+const CommentForm = ({ postId, userId }) => {
     const [content, setContent] = useState("");
     const [authorName, setAuthorName] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            await submitComment({
+
+        // トークンを取得
+        const token = localStorage.getItem("token");
+
+        console.log("Content:", content);
+
+        // APIリクエストのヘッダーにトークンを含める
+        const comment = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
                 content,
                 author_name: authorName,
                 post_id: postId,
-                id: 0,
-                created_at: "",
-                updated_at: "",
-            });
+                user_id: userId,
+            }),
+        };
+
+        try {
+            await submitComment(postId, comment);
             console.log("コメントの投稿に成功しました！");
             setContent("");
             setAuthorName("");
