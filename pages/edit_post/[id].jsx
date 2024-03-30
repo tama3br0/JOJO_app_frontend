@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 
@@ -21,16 +21,33 @@ export async function getServerSideProps(context) {
 
 const EditForm = ({ post }) => {
     const [title, setTitle] = useState(post.title);
+    const [token, setToken] = useState(""); // トークンの状態を管理
     const image = post.image.url;
     const router = useRouter();
+
+    // コンポーネントがマウントされた時にローカルストレージからトークンを取得
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        setToken(token);
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            await axios.put(`http://localhost:3000/api/posts/${post.id}`, {
-                title: title,
-            });
+            // APIリクエストのヘッダーにトークンを含める
+            const config = {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+            };
+
+            await axios.put(
+                `http://localhost:3000/api/posts/${post.id}`,
+                { title: title },
+                config
+            );
 
             router.push("/");
         } catch (error) {

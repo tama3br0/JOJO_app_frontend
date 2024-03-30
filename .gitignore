@@ -34,3 +34,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+# GitHubに写真をプッシュしないように追記
+/public/images

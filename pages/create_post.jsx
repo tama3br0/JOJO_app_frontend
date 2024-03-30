@@ -59,9 +59,9 @@ const CreateForm = () => {
             try {
                 const resizedImageURL = await resizeImage(
                     selectedImage,
-                    400,
-                    400
-                ); // 幅400px、高さ400pxにリサイズ
+                    500,
+                    500
+                ); // 幅500px、高さ500pxにリサイズ
                 setPreviewURL(resizedImageURL);
             } catch (error) {
                 console.error("画像のリサイズ中にエラーが発生しました:", error);
@@ -75,13 +75,27 @@ const CreateForm = () => {
 
         const formData = new FormData();
         formData.append("post[title]", title);
-        formData.append("post[image]", image);
+        formData.append("post[image]", image, image.name);
 
+        // トークンを取得
+        const token = localStorage.getItem("token");
+
+        // APIリクエストのヘッダーにトークンを含める
+        const config = {
+            headers: {
+                "Content-Type": "multipart/form-data", // Content-Type を適切に設定する
+                Authorization: `Bearer ${token}`,
+            },
+        };
         // console.log(formData);
         // console.log(title, image);
 
         try {
-            await axios.post("http://localhost:3000/api/posts", formData);
+            await axios.post(
+                "http://localhost:3000/api/posts",
+                formData,
+                config
+            );
             router.push("/"); // ←一覧ページ上で入力した場合は、この処理を変えないとリロードしない？
         } catch (err) {
             alert("投稿に失敗しました");
@@ -98,7 +112,7 @@ const CreateForm = () => {
                         <input
                             type="file"
                             accept="image/*"
-                            onChange={handleImageChange} // 修正: handleImageChangeを使用するように修正
+                            onChange={handleImageChange}
                         />
                     </label>
                 </div>
