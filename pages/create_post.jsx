@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
-
-// 谷宮さんに実装してもらうための準備
 import styles from "../styles/CreateForm.module.css";
 
-const CreateForm = () => {
+const CreateForm = ({ onPostCreated }) => {
     const [title, setTitle] = useState("");
     const [image, setImage] = useState(null);
     const [previewURL, setPreviewURL] = useState(null); // 追加: プレビュー画像のURLを保持するステート
@@ -87,7 +85,6 @@ const CreateForm = () => {
                 Authorization: `Bearer ${token}`,
             },
         };
-        // console.log(formData);
         // console.log(title, image);
 
         try {
@@ -96,7 +93,13 @@ const CreateForm = () => {
                 formData,
                 config
             );
-            router.push("/"); // ←一覧ページ上で入力した場合は、この処理を変えないとリロードしない？
+            // router.push("/"); // ←一覧ページ上で入力した場合は、この処理を変えないとリロードしない？
+            // 投稿が成功したら親コンポーネントに通知
+            onPostCreated();
+            // フォームの状態を初期化
+            setTitle("");
+            setImage(null);
+            setPreviewURL(null);
         } catch (err) {
             alert("投稿に失敗しました");
         }
