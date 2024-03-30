@@ -27,7 +27,7 @@ export default function BasicSlider() {
 
     return (
         <>
-            <div className={styles.horizontalLine}></div>
+            <div className={styles.horizontalLineOne}></div>
 
             <Swiper
                 breakpoints={slideSettings} // スライダーのレスポンシブ設定
@@ -62,6 +62,7 @@ export default function BasicSlider() {
                     </SwiperSlide>
                 ))}
             </Swiper>
+            <div className={styles.horizontalLineTwo}></div>
         </>
     );
 }

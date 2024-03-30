@@ -1,5 +1,12 @@
 /* create_post.jsxに関するCSS */
 
+.stand {
+    background-image: url(../public/images/oraora.jpg);
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+}
+
 .createContainer {
     max-width: 600px;
     margin: 0 auto;
@@ -18,9 +25,20 @@
     color: #333;
 }
 
+.createTitle {
+    background-color: rgba(0, 0, 0, 0.5); /* 背景色の設定 */
+}
+
+.createTitle p {
+    font-size: 24px;
+    color: #fff; /* 文字色を白に設定 */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 影の追加 */
+    padding: 10px; /* パディングの追加 */
+    border-radius: 5px; /* 角丸の設定 */
+}
 .createTitle input {
     width: 100%;
-    padding: 10px;
+    padding: 10px 0px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -33,7 +51,7 @@
 }
 
 .btnCreate {
-    background-color: #1da1f2;
+    background-color: #ff4da1;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -43,5 +61,5 @@
 }
 
 .btnCreate:hover {
-    background-color: #0d8bf0;
+    background-color: #ff3399;
 }

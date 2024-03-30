@@ -9,7 +9,12 @@
     z-index: 1; /* ナビゲーションボタンがランキングテキストよりも上に表示されるようにする */
 }
 
-.horizontalLine {
+.horizontalLineOne {
+    border: 18px solid rgba(0, 0, 0, 0.7); /* 背景色を設定 */
+    margin-bottom: 8px;
+}
+
+.horizontalLineTwo {
     border: 18px solid rgba(0, 0, 0, 0.7); /* 背景色を設定 */
 }
 
@@ -19,13 +24,14 @@
     left: 0; /* 左端に配置 */
     width: 100%; /* 幅を100%にして親要素に合わせる */
     text-align: center; /* テキストを中央揃えにする */
-    background-color: rgba(0, 0, 0, 0.7); /* 背景色を設定 */
     color: white; /* テキスト色を設定 */
     padding: 8px; /* パディングを追加して見栄えを良くする */
     overflow: hidden; /* 画像と同じ横幅で切れるようにする */
 }
 
 .rankingsText {
-    font-size: 18px; /* テキストサイズを設定 */
+    font-size: 48px; /* テキストサイズを設定 */
     font-weight: bold; /* フォントウェイトを太字にする */
+    color: #ffff00; /* テキスト色を黄色に変更 */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* テキストに影を追加 */
 }

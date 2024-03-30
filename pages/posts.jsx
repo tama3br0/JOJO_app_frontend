@@ -46,15 +46,10 @@ const Posts = () => {
     //     }
     // };
 
-    const handlePostCreated = () => {
-        // 投稿が作成されたら投稿一覧を再取得する
-        fetchPosts();
-    };
-
     return (
         <>
             <div className={styles.posts}>
-                <h1>投稿一覧</h1>
+                <h1>JOJO DACHI</h1>
                 <div className={styles.postContainer}>
                     {posts.map((post) => (
                         <div key={post.id} className={styles.postItem}>

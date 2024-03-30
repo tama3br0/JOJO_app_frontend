@@ -1,9 +1,7 @@
-/* Home.module.css */
-
 /* 投稿一覧を中央に配置 */
 .posts {
     margin: 50px auto;
-    max-width: 800px;
+    max-width: 1200px;
     padding: 0 20px;
 }
 
@@ -13,20 +11,26 @@
 }
 
 /* 投稿一覧のレイアウトをグリッドに */
-.postContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-gap: 20px;
-}
-
 .postItem {
     position: relative;
     cursor: pointer;
+    width: 350px; /* 固定値を変更 */
+    height: 350px; /* 固定値を変更 */
+}
+
+.postContainer {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fill,
+        minmax(350px, 1fr)
+    ); /* minmaxの最小値も変更 */
+    grid-gap: 20px;
 }
 
 .postItem img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover; /* 画像を親要素にフィットさせる */
     border-radius: 8px; /* 画像の角を丸める */
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* 画像に影 */
     transition: transform 0.3s ease-in-out; /* ホバー時に画像を拡大するアニメーション */

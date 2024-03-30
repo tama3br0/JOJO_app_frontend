@@ -108,44 +108,45 @@ const CreateForm = ({ onPostCreated }) => {
     };
 
     return (
-        <div className={styles.createContainer}>
-            <div>ユーザー情報を表示</div>
-            <form className={styles.createForm} onSubmit={handleSubmit}>
-                <div>
-                    <label className={styles.createLabel}>
-                        写真をアップロード:
-                        <input
-                            type="file"
-                            accept="image/*"
-                            onChange={handleImageChange}
-                        />
-                    </label>
-                </div>
-                {/* プレビューを表示 */}
-                {previewURL && (
+        <div className={styles.stand}>
+            <div className={styles.createContainer}>
+                <div>ユーザー情報を表示</div>
+                <form className={styles.createForm} onSubmit={handleSubmit}>
                     <div>
-                        <img
-                            src={previewURL}
-                            alt="画像プレビュー"
-                            className={styles.imagePreview}
-                        />
+                        <label className={styles.createLabel}>
+                            <input
+                                type="file"
+                                accept="image/*"
+                                onChange={handleImageChange}
+                            />
+                        </label>
                     </div>
-                )}
-                <div>
-                    <label className={styles.createTitle}>
-                        写真のタイトル:
-                        <input
-                            type="text"
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
-                        />
-                    </label>
-                </div>
+                    {/* プレビューを表示 */}
+                    {previewURL && (
+                        <div>
+                            <img
+                                src={previewURL}
+                                alt="画像プレビュー"
+                                className={styles.imagePreview}
+                            />
+                        </div>
+                    )}
+                    <div>
+                        <label className={styles.createTitle}>
+                            <p>写真のタイトル:</p>
+                            <input
+                                type="text"
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
+                            />
+                        </label>
+                    </div>
 
-                <button type="submit" className={styles.btnCreate}>
-                    投稿ボタン
-                </button>
-            </form>
+                    <button type="submit" className={styles.btnCreate}>
+                        オラオラオラオラオラオラ！
+                    </button>
+                </form>
+            </div>
         </div>
     );
 };
