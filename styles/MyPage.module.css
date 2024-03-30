@@ -1,0 +1,44 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.tab-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    padding: 10px 20px;
+    margin: 0 100px; /* トグルボタン間の間隔 */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: transparent; /* 背景色を透明にする */
+    transition: background-color 0.3s ease; /* ホバー時のトランジションを追加 */
+}
+
+.tab-button.active {
+    background-color: #fff;
+}
+
+.tab-button:hover {
+    background-color: blue; /* ホバー時の背景色を薄いグレーにする */
+}
+
+.tab-content {
+    margin-top: 10px;
+}
+
+.separator-container {
+    margin-top: 0; /* 棒線の上にスペースを作成 */
+    margin-bottom: 10px; /* 棒線の下にスペースを作成 */
+}
+
+.separator {
+    width: 100%;
+    border-bottom: 1px solid #ccc; /* トグルとユーザープロフィールの間の棒線 */
+}
