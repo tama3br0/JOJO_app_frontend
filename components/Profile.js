@@ -1,4 +1,8 @@
-import { useEffect, useState } from "react";
+<<<<<<< HEAD
+import { useEffect, useState } from 'react';
+import '../styles/Profile.module.css';
+=======
+>>>>>>> e01c51fb59a069746b8780baa6f8879872c4110c
 
 const Profile = () => {
     const [userData, setUserData] = useState(null);
@@ -39,11 +43,10 @@ const Profile = () => {
 
     return (
         <div>
-            <h1>My Page</h1>
             {userData && (
-                <div>
-                    <p>User ID: {userData.user_name}</p>
-                    <p>Icon: {userData.icon}</p>
+                <div className="profile-container">
+                    {userData.icon && <img src={userData.icon} alt="User Icon" style={{ width: '100px', height: '100px' }} />}
+                    <p className="user-name">{userData.user_name}</p>
                 </div>
             )}
         </div>
