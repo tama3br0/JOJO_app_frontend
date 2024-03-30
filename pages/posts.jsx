@@ -3,8 +3,6 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import axios from "axios";
 import LikeButton from "../components/likes/LikeButton";
-
-// 谷宮さんに実装してもらうための準備
 import styles from "../styles/Home.module.css";
 import Footer from "../components/footer";
 
@@ -21,7 +19,8 @@ import Footer from "../components/footer";
 // }
 
 const Posts = () => {
-    const router = useRouter();
+    // const router = useRouter(); <= handleDeleteと一緒に使う
+
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
@@ -46,6 +45,11 @@ const Posts = () => {
     //         alert("削除に失敗しました");
     //     }
     // };
+
+    const handlePostCreated = () => {
+        // 投稿が作成されたら投稿一覧を再取得する
+        fetchPosts();
+    };
 
     return (
         <>
