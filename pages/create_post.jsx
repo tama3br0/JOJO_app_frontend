@@ -100,6 +100,8 @@ const CreateForm = ({ onPostCreated }) => {
             setTitle("");
             setImage(null);
             setPreviewURL(null);
+
+            router.push("/"); // ←一覧ページ上で入力した場合は、この処理を変えないとリロードしない？
         } catch (err) {
             alert("投稿に失敗しました");
         }
