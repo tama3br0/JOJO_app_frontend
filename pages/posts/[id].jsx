@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import Link from "next/link";
 import CommentForm from "../../components/post/commentForm";
 import CommentList from "../../components/post/commentList";
-
-// 谷宮さんに実装してもらうための準備
 import styles from "@/styles/Show.module.css";
 
 export async function getStaticPaths() {
@@ -45,14 +43,29 @@ export async function getStaticProps({ params }) {
 }
 
 const Show = ({ post, comments }) => {
-    const title = post.title;
-    const image = post.image.url;
+    const [token, setToken] = useState(""); // トークンの状態を管理
     const router = useRouter();
+
+    // コンポーネントがマウントされた時にローカルストレージからトークンを取得
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        setToken(token);
+    }, []);
 
     const handleDelete = async (postId) => {
         try {
             if (confirm("本当に削除しますか？")) {
-                await axios.delete(`http://localhost:3000/api/posts/${postId}`);
+                // APIリクエストのヘッダーにトークンを含める
+                const config = {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                };
+                await axios.delete(
+                    `http://localhost:3000/api/posts/${postId}`,
+                    config
+                );
                 // 削除に成功したら一覧ページへ
                 router.push("/");
             }
@@ -66,9 +79,12 @@ const Show = ({ post, comments }) => {
             <div className={styles.userInfo}>ユーザー情報を表示</div>
             <div className={styles.postContainer}>
                 <div className={styles.postImage}>
-                    <img src={`http://localhost:3000${image}`} alt={title} />
+                    <img
+                        src={`http://localhost:3000${post.image.url}`}
+                        alt={post.title}
+                    />
                 </div>
-                <div className={styles.postTitle}>{title}</div>
+                <div className={styles.postTitle}>{post.title}</div>
             </div>
             <Link href={`/edit_post/${post.id}`}>
                 <button className={styles.btnEdit}>編集</button>
