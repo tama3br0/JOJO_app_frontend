@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { loginUser } from "../utils/auth";
-import styles from "../styles/Login.module.css";
+import { ChakraProvider, Flex, Box, FormControl, FormLabel, Input, Button } from "@chakra-ui/react";
+import theme from '../styles/theme';
 
 const LoginPage = () => {
     const router = useRouter();
@@ -9,7 +10,7 @@ const LoginPage = () => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
-    const handleLogin = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         console.log("AAA"); // ここに追加
         try {
@@ -26,36 +27,38 @@ const LoginPage = () => {
     };
 
     return (
-        <div className={styles["login-container"]}>
-            <div className={styles["logo-container"]}>
-                <img src="/logo.png" alt="Logo" className={styles.logo} />
-            </div>
-            <form className={styles["login-form"]} onSubmit={handleLogin}>
-                <div className={styles["form-group"]}>
-                    <label htmlFor="email">Email:</label>
-                    <input
-                        type="email"
-                        id="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.currentTarget.value)}
-                        required
-                    />
-                </div>
-                <div className={styles["form-group"]}>
-                    <label htmlFor="password">Password:</label>
-                    <input
-                        type="password"
-                        id="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.currentTarget.value)}
-                        required
-                    />
-                </div>
-
-                <button type="submit">ウリイイイイヤアアアッー</button>
-                {error && <p>{error}</p>}
-            </form>
-        </div>
+        <ChakraProvider theme={theme}>
+            <Flex justify="center" align="center" height="100vh">
+                <Box
+                    position="absolute"
+                    top="0"
+                    left="0"
+                    width="100%"
+                    height="100%"
+                    backgroundImage="url('https://i.ytimg.com/vi/LPHc8P5p494/maxresdefault.jpg')"
+                    backgroundSize="cover"
+                    backgroundPosition="center"
+                    zIndex="-1" // 背景画像を一番後ろに配置するためのz-index
+                />
+                <Flex justify="center" align="center" height="100%">
+                    <Box width="300px" p="6" bg="white" borderRadius="md" zIndex="1"> {/* フォームを前面に持ってくるためのz-index */}
+                        <form onSubmit={handleSubmit}>
+                            <FormControl id="email" isRequired>
+                                <FormLabel>Email address</FormLabel>
+                                <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                            </FormControl>
+                            <FormControl id="password" mt={4} isRequired>
+                                <FormLabel>Password</FormLabel>
+                                <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                            </FormControl>
+                            <Button mt={4} colorScheme="blue" type="submit" width="100%">
+                                Sign in
+                            </Button>
+                        </form>
+                    </Box>
+                </Flex>
+            </Flex>
+        </ChakraProvider>
     );
 };
 
