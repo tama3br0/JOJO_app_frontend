@@ -1,6 +1,6 @@
 import Header from "../components/header";
 import Create from "./create_post";
-import Ranking from "../components/ranking";
+import Swiper from "../components/swiper";
 
 import Posts from "./posts";
 import { useState } from "react";
@@ -17,7 +17,7 @@ export default function Home() {
         <>
             <Header />
             <Create onPostCreated={handlePostCreated} />
-            <Ranking />
+            <Swiper />
             <Posts key={refreshPosts} />
             {/* <Footer /> */}
         </>

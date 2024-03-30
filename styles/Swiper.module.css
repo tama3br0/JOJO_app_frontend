@@ -1,0 +1,31 @@
+/* Ranking.module.css */
+
+.slideWrapper {
+    position: relative; /* 相対位置を設定してナビゲーションボタンを配置 */
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    z-index: 1; /* ナビゲーションボタンがランキングテキストよりも上に表示されるようにする */
+}
+
+.horizontalLine {
+    border: 18px solid rgba(0, 0, 0, 0.7); /* 背景色を設定 */
+}
+
+.rankings {
+    position: absolute; /* 絶対位置を設定して画像の下に配置 */
+    bottom: 0; /* 下端に配置 */
+    left: 0; /* 左端に配置 */
+    width: 100%; /* 幅を100%にして親要素に合わせる */
+    text-align: center; /* テキストを中央揃えにする */
+    background-color: rgba(0, 0, 0, 0.7); /* 背景色を設定 */
+    color: white; /* テキスト色を設定 */
+    padding: 8px; /* パディングを追加して見栄えを良くする */
+    overflow: hidden; /* 画像と同じ横幅で切れるようにする */
+}
+
+.rankingsText {
+    font-size: 18px; /* テキストサイズを設定 */
+    font-weight: bold; /* フォントウェイトを太字にする */
+}

@@ -1,0 +1,34 @@
+.editForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image {
+    border-radius: 10px;
+    max-width: 100%;
+    /* overflow: hidden; */
+    margin-top: 30px;
+}
+
+.textInput {
+    margin-top: 30px;
+    font-size: 18px; /* フォントサイズを大きくする */
+    padding: 12px; /* パディングを増やして、inputタグの大きさを調整する */
+    width: 250px;
+}
+
+.submitButton {
+    margin-top: 15px;
+    padding: 10px 20px; /* ボタンのパディングを設定 */
+    font-size: 16px; /* ボタンのフォントサイズを設定 */
+    border-radius: 5px; /* ボタンの角丸を設定 */
+    background-color: royalblue; /* ボタンの背景色を設定 */
+    color: #fff; /* ボタンのテキスト色を設定 */
+    border: none; /* ボタンの枠線をなくす */
+    cursor: pointer; /* ボタンにカーソルをポインターに設定 */
+}
+
+.editForm .submitButton:hover {
+    background-color: #5679e3; /* ホバー時の背景色を設定 */
+}

@@ -1,0 +1,32 @@
+.userInfo {
+    display: flex; /* 子要素を横並びに配置 */
+    flex-direction: column;
+    align-items: center; /* 子要素を垂直方向に中央揃え */
+}
+
+.btnContainer {
+    display: flex;
+}
+
+.btnEdit,
+.btnDelete {
+    display: inline-block;
+    margin-top: 15px;
+    margin-right: 10px;
+    padding: 3px 10px; /* ボタンのパディングを設定 */
+    font-size: 16px; /* ボタンのフォントサイズを設定 */
+    border-radius: 5px; /* ボタンの角丸を設定 */
+    cursor: pointer; /* ボタンにカーソルをポインターに設定 */
+}
+
+.btnEdit {
+    background-color: crimson; /* ボタンの背景色を設定 */
+    color: #fff; /* ボタンのテキスト色を設定 */
+    border: none; /* ボタンの枠線をなくす */
+}
+
+.btnDelete {
+    background-color: mediumseagreen; /* ボタンの背景色を設定 */
+    color: #fff; /* ボタンのテキスト色を設定 */
+    border: none; /* ボタンの枠線をなくす */
+}
