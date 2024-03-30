@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import axios from "axios";
-// import Ranking from "../components/ranking";
-// import Rank from "../components/rank";
+import LikeButton from "../components/likes/LikeButton";
 
 // 谷宮さんに実装してもらうための準備
 import styles from "../styles/Home.module.css";
@@ -65,6 +64,9 @@ const Posts = () => {
                                 </div>
                                 {/* <h2>{post.title}</h2> */}
                             </Link>
+                            <div>
+                                <LikeButton id={post.id} />
+                            </div>
                             {/* <button
                             className={styles.btnDelete}
                             onClick={() => handleDelete(post.id)}
