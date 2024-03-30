@@ -9,7 +9,7 @@ const logout = async () => {
         });
         if (response.ok) {
             localStorage.removeItem('token');
-            window.location.href = '/login';
+            window.location.href = '/top';
         } else {
             console.log('Logout failed:', response.statusText);
         }
