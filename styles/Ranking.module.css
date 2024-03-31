@@ -1,0 +1,87 @@
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.box {
+    position: relative;
+    padding: 36px; /* 画像間の余白の設定 */
+}
+
+.h1 {
+    font-size: 72px; /* 大きなフォントサイズ */
+    font-weight: bold; /* 太字 */
+    color: #ff6600; /* オレンジ色 */
+    text-transform: uppercase; /* テキストを大文字に変換 */
+    text-shadow: 2px 2px 0px #000; /* テキストに影を追加 */
+    letter-spacing: 4px; /* 文字間のスペースを増やす */
+    padding: 20px 0; /* 上下の余白 */
+    text-align: center; /* テキストを中央揃え */
+    margin-bottom: 20px; /* 下部のマージン */
+    line-height: 1; /* 行の高さ */
+    border-bottom: 4px solid #ff6600; /* 下線を追加 */
+}
+
+.imageContainer {
+    width: 100%;
+    padding-top: 100%; /* 画像の高さを幅に合わせて正方形にする */
+    position: relative;
+    overflow: hidden;
+}
+
+.imageContainer img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 画像を親要素に合わせて切り取ります */
+}
+
+.image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.rank {
+    position: absolute;
+    top: 36px; /* 順位の位置調整*/
+    left: 36px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px; /* 大きなパディング */
+    border-radius: 50%; /* 円形にする */
+    font-weight: bold;
+    font-size: 24px; /* 大きなフォントサイズ */
+    line-height: 1; /* 垂直方向の中央寄せ */
+    width: 40px; /* 固定の幅 */
+    height: 40px; /* 固定の高さ */
+    display: flex; /* 中央寄せ */
+    align-items: center; /* 中央寄せ */
+    justify-content: center; /* 中央寄せ */
+}
+
+.details {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.title {
+    font-weight: bold;
+    margin: 0;
+}
+
+.date {
+    color: gray;
+    font-size: 12px;
+    margin: 0;
+}

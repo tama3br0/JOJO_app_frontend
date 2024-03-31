@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import styles from "../styles/CreateForm.module.css";
+import UserData from "../components/UserData";
 
 const CreateForm = ({ onPostCreated }) => {
     const [title, setTitle] = useState("");
@@ -110,7 +111,6 @@ const CreateForm = ({ onPostCreated }) => {
     return (
         <div className={styles.stand}>
             <div className={styles.createContainer}>
-                <div>ユーザー情報を表示</div>
                 <form className={styles.createForm} onSubmit={handleSubmit}>
                     <div>
                         <label className={styles.createLabel}>

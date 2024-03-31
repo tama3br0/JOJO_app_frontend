@@ -1,5 +1,3 @@
-/* create_post.jsxに関するCSS */
-
 .stand {
     background-image: url(../public/images/oraora.jpg);
     background-size: cover;
@@ -38,7 +36,7 @@
 }
 .createTitle input {
     width: 100%;
-    padding: 10px 0px;
+    padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;

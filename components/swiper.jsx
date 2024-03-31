@@ -5,15 +5,17 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import styles from "@/styles/Swiper.module.css";
 
+// 画像とリンクの情報を配列で定義
 const images = [
-    "/images/dendo.jpg",
-    "/images/gekkan.png",
-    "/images/shukan.jpg",
+    { src: "/images/dendo.jpg", link: "/fame" }, // 殿堂入り画像
+    { src: "/images/gekkan.png", link: "/monthly" }, // 月間ランキング画像
+    { src: "/images/shukan.jpg", link: "/weekly" }, // 週間ランキング画像
 ];
 
 const rankings = ["殿堂入り", "月間ランキング", "週間ランキング"];
 
 export default function BasicSlider() {
+    // スライドの設定
     const slideSettings = {
         0: {
             slidesPerView: 1.4,
@@ -27,41 +29,48 @@ export default function BasicSlider() {
 
     return (
         <>
+            {/* 横線1 */}
             <div className={styles.horizontalLineOne}></div>
 
+            {/* Swiperコンポーネント */}
             <Swiper
-                breakpoints={slideSettings} // スライダーのレスポンシブ設定
-                slidesPerView={"auto"} // ハイドレーションエラー対策
-                centeredSlides={true} // スライドを中央に配置
-                loop={true} // スライドをループさせる
-                speed={1000} // スライドが切り替わる時の速度
-                navigation // ナビゲーション（左右の矢印）
-                pagination={{ clickable: true }} // ページネーション, クリックで対象のスライドに切り替わる
-                keyboard // キーボード操作を有効にする
-                className={styles.slideWrapper} // スライダー全体のクラス
+                breakpoints={slideSettings}
+                slidesPerView={"auto"}
+                centeredSlides={true}
+                loop={true}
+                speed={1000}
+                navigation
+                pagination={{ clickable: true }}
+                keyboard
+                className={styles.slideWrapper}
             >
-                {images.map((src, index) => (
+                {/* 画像スライド */}
+                {images.map((item, index) => (
                     <SwiperSlide key={index}>
-                        <div className={styles.slideContent}>
-                            <Image
-                                src={src}
-                                width={640} // 画像の幅を調整
-                                height={360} // 画像の高さを調整
-                                alt="Slider Image"
-                                objectFit="cover"
-                                className={styles.slideImage} // 画像のクラス
-                            />
-                            <div className={styles.rankings}>
-                                {/* ランキングのコンテナ */}
-                                <span className={styles.rankingsText}>
-                                    {rankings[index]}
-                                </span>{" "}
+                        {/* 画像リンク */}
+                        <a href={item.link}>
+                            <div className={styles.slideContent}>
+                                {/* 画像 */}
+                                <Image
+                                    src={item.src}
+                                    width={640}
+                                    height={360}
+                                    alt="Slider Image"
+                                    objectFit="cover"
+                                    className={styles.slideImage}
+                                />
                                 {/* ランキングテキスト */}
+                                <div className={styles.rankings}>
+                                    <span className={styles.rankingsText}>
+                                        {rankings[index]}
+                                    </span>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </SwiperSlide>
                 ))}
             </Swiper>
+            {/* 横線2 */}
             <div className={styles.horizontalLineTwo}></div>
         </>
     );
