@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "../../styles/Comment.module.css";
 import { deleteComment } from "../../services/commentService";
+import UserName from "../../components/UseUserName";
 
 const CommentList = ({ comments }) => {
     console.log("comments:", comments);

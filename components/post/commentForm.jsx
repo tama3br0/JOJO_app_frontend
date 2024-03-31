@@ -1,10 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { submitComment } from "../../services/commentService";
 import styles from "../../styles/Comment.module.css";
+import UserData from "../../components/UserData";
 
 const CommentForm = ({ postId, userId }) => {
     const [content, setContent] = useState("");
-    const [authorName, setAuthorName] = useState("");
+    const { userName } = UserData(); // ユーザー名を取得
+
+    const [authorName, setAuthorName] = useState(userName); // ユーザー名を初期値として設定
+
+    useEffect(() => {
+        setAuthorName(userName);
+    }, [userName]); // userName が変更されたときに authorName を更新
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -46,7 +53,6 @@ const CommentForm = ({ postId, userId }) => {
                 <input
                     className={styles.input}
                     type="text"
-                    placeholder="あなたのユーザー名"
                     value={authorName}
                     onChange={(e) => setAuthorName(e.target.value)}
                 />

@@ -27,10 +27,12 @@ const UserData = () => {
 
                 if (response.ok) {
                     const data = await response.json();
-                    console.log("dataの中身:", data); // データの内容をコンソールに出力
+                    // console.log("dataの中身:", data); // データの内容をコンソールに出力
 
-                    // setUserIcon(data.icon);
-                    setUserIcon(data.icon.replace(/^\/icons\//, "")); // /icons/ の部分を空文字列に置換することで、画像名(例: 01.png)のみを取得する
+                    // "icons/" の部分を削除して、アイコン名だけを取得
+                    const iconPath = data.icon;
+                    const iconName = iconPath.split("/")[1];
+                    setUserIcon(iconName);
                     setUserName(data.user_name);
                     setUserPosts(data.posts);
                 } else {
