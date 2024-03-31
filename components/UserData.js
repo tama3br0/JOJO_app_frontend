@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 const UserData = () => {
     const [userIcon, setUserIcon] = useState(null);
@@ -27,7 +27,10 @@ const UserData = () => {
 
                 if (response.ok) {
                     const data = await response.json();
-                    setUserIcon(data.icon);
+                    console.log("dataの中身:", data); // データの内容をコンソールに出力
+
+                    // setUserIcon(data.icon);
+                    setUserIcon(data.icon.replace(/^\/icons\//, "")); // /icons/ の部分を空文字列に置換することで、画像名(例: 01.png)のみを取得する
                     setUserName(data.user_name);
                     setUserPosts(data.posts);
                 } else {

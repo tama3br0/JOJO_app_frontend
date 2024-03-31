@@ -5,6 +5,7 @@ import Link from "next/link";
 import CommentForm from "../../components/post/commentForm";
 import CommentList from "../../components/post/commentList";
 import styles from "@/styles/Show.module.css";
+import UserInfo from "../../components/UseUserInfo";
 
 export async function getStaticPaths() {
     const res = await fetch("http://localhost:3000/api/posts");
@@ -83,7 +84,7 @@ const Show = ({ post, comments }) => {
 
     return (
         <div className={styles.showContainer}>
-            <div className={styles.userInfo}>ユーザー情報を表示</div>
+            <UserInfo />
             <div className={styles.postContainer}>
                 <div className={styles.postImage}>
                     <img

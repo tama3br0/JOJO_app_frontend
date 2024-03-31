@@ -6,20 +6,30 @@
     top: 0;
     z-index: 999;
     justify-content: space-between;
-    background-color: royalblue;
+    background-color: rgb(20, 21, 22);
     color: white;
     padding: 10px 20px;
 }
 
 .leftButton {
-    height: 50px;
+    background-image: url("../public/button.png"); /* 画像のパスを適切に設定してください */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: 30px;
+    width: 100px; /* 画像の幅を適切に設定してください */
+    height: 50px; /* 画像の高さを適切に設定してください */
+    border: none;
+    cursor: pointer;
+    outline: none;
+    /* height: 50px;
     padding: 18px;
     border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
     font-family: sans-serif;
     display: flex;
-    align-items: center;
+    align-items: center; */
 }
 
 .leftButton:hover {
@@ -27,7 +37,7 @@
 }
 
 .rightButton {
-    width: 100px;
+    width: 140px;
     padding: 5px;
     border-radius: 5px;
     font-weight: bold;

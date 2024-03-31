@@ -1,0 +1,22 @@
+.userInfoContainer {
+    display: flex;
+    align-items: center;
+}
+
+.userIcon {
+    width: 72px; /* アイコンの大きさを調整 */
+    height: auto;
+    margin-right: 10px; /* アイコンとユーザー名の間のスペースを調整 */
+}
+
+.userName {
+    margin: 0; /* ユーザー名の余白を調整 */
+    font-size: 16px; /* ユーザー名のフォントサイズを調整 */
+    font-weight: bold; /* ユーザー名を太字にする */
+    color: white; /* ユーザー名の文字色を白に設定 */
+    padding: 5px 10px; /* ユーザー名の内側の余白を設定 */
+    background-color: black; /* 背景色を黒に設定 */
+    display: inline-block; /* インライン要素として表示 */
+    border: 2px solid black; /* 黒線枠を設定 */
+    border-radius: 5px; /* 角丸を設定 */
+}

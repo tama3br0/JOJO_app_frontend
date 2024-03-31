@@ -1,0 +1,50 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+.Form {
+    max-width: 420px;
+    margin: 50px auto;
+    /* background:rgb(30,30,40);  */
+}
+
+.inputGroup {
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    text-align: center;
+    padding: 5px;
+}
+
+.inputGroup:focus {
+    border: 2px solid #cc4949;
+}
+
+.input {
+    width: 300px;
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.textarea {
+    font-size: large;
+    width: 300px;
+    height: 70px;
+    border-radius: 5px;
+    text-align: center;
+    padding-top: 40px;
+    letter-spacing: 2px;
+}
+
+.button {
+    border-bottom: 5px solid #fff;
+    width: 100%;
+    background: #ef349f;
+    border-radius: 5px;
+    border: 0;
+    cursor: pointer;
+    color: white;
+    font-size: 24px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: all 0.3s;
+    margin: 10 0 20 0px;
+    font-weight: 700;
+}

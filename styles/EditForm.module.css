@@ -1,3 +1,39 @@
+.editContainer {
+    background-image: url("https://jojo-portal.com/special/digital-contents/assets/images/common/wallpaper_pc_diamond-is-unbreakable.jpg");
+    background-size: cover;
+    height: 750px;
+}
+
+.wrapper {
+    color: black;
+    border-radius: 3px;
+    margin-top: 40px;
+    background-color: #fff;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    height: 650px;
+}
+
+.postTitle {
+    color: black;
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    font-size: large;
+    font-size: 30px;
+    text-align: center;
+    margin-top: 30px;
+    height: 40px;
+    width: 200px;
+    border-radius: 2px;
+    line-height: 40px;
+}
+
+.editImage {
+    margin-top: 30px;
+}
+
 .editForm {
     display: flex;
     flex-direction: column;
