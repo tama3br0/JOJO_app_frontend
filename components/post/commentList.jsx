@@ -1,10 +1,10 @@
 import React from "react";
-import styles from "../../styles/Comment.module.css";
+import styles from "../../styles/CommentList.module.css";
 import { deleteComment } from "../../services/commentService";
 import UserName from "../../components/UseUserName";
 
 const CommentList = ({ comments }) => {
-    console.log("comments:", comments);
+    // console.log("comments:", comments);
     // const handleDelete = async (postId, id) => {
     //     const confirmDelete = window.confirm("本当に削除しますか？");
     //     if (!confirmDelete) {
@@ -21,23 +21,22 @@ const CommentList = ({ comments }) => {
 
     return (
         <div className={styles.commentsContainer}>
-            <h3 className={styles.heading}>コメント一覧</h3>
             {comments.map((comment) => (
                 <div key={comment.id} className={styles.comment}>
-                    <p className={styles.content}>
-                        {JSON.parse(comment.content).content}
-                    </p>
-                    <p className={styles.author}>
-                        By: {JSON.parse(comment.content).author_name}
-                    </p>
+                    <div className={styles.authorContentWrapper}>
+                        <p className={styles.content}>
+                            {JSON.parse(comment.content).content}
+                        </p>
+                        <p className={styles.author}>
+                            By:{JSON.parse(comment.content).author_name}
+                        </p>
+                    </div>
                     {/* <button
-                        onClick={() =>
-                            handleDelete(comment.post_id, comment.id)
-                        }
-                        className={styles.btnOutlineDelete}
-                    >
-                        削除
-                    </button> */}
+                onClick={() => handleDelete(comment.post_id, comment.id)}
+                className={styles.btnOutlineDelete}
+              >
+                削除
+              </button> */}
                     <div className={styles.horizontalLine}></div>
                 </div>
             ))}

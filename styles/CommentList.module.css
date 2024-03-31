@@ -1,0 +1,33 @@
+/* CommentList.module.css */
+
+.commentsContainer {
+    text-align: center;
+}
+
+.comment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8); /* 薄い白色を指定 */
+    padding: 10px; /* コメントの周囲に余白を設定 */
+    margin-bottom: 10px; /* コメント間の間隔を設定 */
+}
+
+.authorContentWrapper {
+    display: flex;
+    flex-direction: row; /* 横並びにする */
+    align-items: center;
+}
+
+.author {
+    margin-left: 16px; /* 適宜調整してください */
+}
+
+.content {
+    margin-right: 16px; /* 適宜調整してください */
+}
+
+.author,
+.content {
+    margin-bottom: 5px; /* 適宜調整してください */
+}

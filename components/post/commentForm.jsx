@@ -63,11 +63,12 @@ const CommentForm = ({ postId, userId }) => {
                     placeholder="コメント欄"
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
+                    style={{ width: "300px", height: "30px" }}
                 />
             </div>
             <div className={styles.inputGroup}>
                 <button className={styles.button} type="submit">
-                    コメントを投稿する
+                    コメントか…やれやれだぜ
                 </button>
             </div>
         </form>

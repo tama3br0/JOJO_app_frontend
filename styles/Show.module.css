@@ -58,13 +58,13 @@
 }
 
 .btnEdit {
-    background-color: rgb(232, 129, 32); /* ボタンの背景色を設定 */
-    color: #fff; /* ボタンのテキスト色を設定 */
+    background-color: #c0e600; /* ボタンの背景色を設定 */
+    color: #000; /* ボタンのテキスト色を設定 */
     border: none; /* ボタンの枠線をなくす */
 }
 
 .btnDelete {
-    background-color: rgb(45, 176, 104); /* ボタンの背景色を設定 */
+    background-color: #ff4da1; /* ボタンの背景色を設定 */
     color: #fff; /* ボタンのテキスト色を設定 */
     border: none; /* ボタンの枠線をなくす */
 }

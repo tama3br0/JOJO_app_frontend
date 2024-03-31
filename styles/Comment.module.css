@@ -29,22 +29,26 @@
     height: 70px;
     border-radius: 5px;
     text-align: center;
-    padding-top: 40px;
     letter-spacing: 2px;
+    padding-top: 4px;
 }
 
 .button {
     border-bottom: 5px solid #fff;
-    width: 100%;
-    background: #ef349f;
+    width: 300px; /* inputタグと同じ幅に設定 */
+    background-color: #ff4da1;
     border-radius: 5px;
     border: 0;
     cursor: pointer;
     color: white;
     font-size: 24px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 5px; /* 調整された値 */
+    padding-bottom: 5px; /* 調整された値 */
     transition: all 0.3s;
-    margin: 10 0 20 0px;
+    margin: 10px 0 20px 0px; /* 必要に応じて調整 */
     font-weight: 700;
+}
+
+.button:hover {
+    background-color: #ff3399;
 }
