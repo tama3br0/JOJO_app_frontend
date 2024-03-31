@@ -6,6 +6,7 @@ import CommentForm from "../../components/post/commentForm";
 import CommentList from "../../components/post/commentList";
 import styles from "@/styles/Show.module.css";
 import UserInfo from "../../components/UseUserInfo";
+import Header from "../../components/header";
 
 export async function getStaticPaths() {
     const res = await fetch("http://localhost:3000/api/posts");
@@ -84,25 +85,29 @@ const Show = ({ post, comments }) => {
 
     return (
         <div className={styles.showContainer}>
+            <Header />
             <UserInfo />
             <div className={styles.postContainer}>
                 <div className={styles.postImage}>
                     <img
+                        className={styles.imageOnly}
                         src={`http://localhost:3000${post.image.url}`}
                         alt={post.title}
                     />
                 </div>
                 <div className={styles.postTitle}>{post.title}</div>
             </div>
-            <Link href={`/edit_post/${post.id}`}>
-                <button className={styles.btnEdit}>編集</button>
-            </Link>
-            <button
-                className={styles.btnDelete}
-                onClick={() => handleDelete(post.id)}
-            >
-                削除
-            </button>
+            <div className={styles.btnContainer}>
+                <Link href={`/edit_post/${post.id}`}>
+                    <button className={styles.btnEdit}>編集</button>
+                </Link>
+                <button
+                    className={styles.btnDelete}
+                    onClick={() => handleDelete(post.id)}
+                >
+                    削除
+                </button>
+            </div>
             <div className={styles.comment}>
                 {/* コメントフォーム */}
                 <CommentForm postId={parseInt(post.id)} />

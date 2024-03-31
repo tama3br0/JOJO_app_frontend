@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
+import Header from "../../components/header";
 
-// 谷宮さんに実装してもらうための準備
 import styles from "@/styles/EditForm.module.css";
 
 // 動的に変わるAPIのidを取得
@@ -56,22 +56,31 @@ const EditForm = ({ post }) => {
     };
 
     return (
-        <div className={styles.editContainer}>
-            <form className={styles.editForm} onSubmit={handleSubmit}>
-                <img src={`http://localhost:3000${image}`} alt="Post Image" />
-
-                <label>
-                    写真のタイトル:
-                    <input
-                        type="text"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
+        <>
+            <Header />
+            <div className={styles.editContainer}>
+                <form className={styles.editForm} onSubmit={handleSubmit}>
+                    <img
+                        src={`http://localhost:3000${image}`}
+                        alt="Post Image"
+                        className={styles.image} // 追加
                     />
-                </label>
 
-                <button type="submit">更新ボタン</button>
-            </form>
-        </div>
+                    <label>
+                        <input
+                            type="text"
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                            className={styles.textInput} // 追加
+                        />
+                    </label>
+                </form>
+
+                <button type="submit" className={styles.submitButton}>
+                    グレートですよ こいつァ
+                </button>
+            </div>
+        </>
     );
 };
 

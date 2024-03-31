@@ -38,12 +38,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #fff;
+    width: 600px;
+    margin: 0 auto;
+    padding: 10px;
 }
 
 .image {
     border-radius: 10px;
-    max-width: 100%;
-    /* overflow: hidden; */
+    width: 360px; /* 任意のサイズに設定 */
+    height: 360px; /* 任意のサイズに設定 */
+    object-fit: cover;
     margin-top: 30px;
 }
 
@@ -55,16 +60,17 @@
 }
 
 .submitButton {
-    margin-top: 15px;
+    display: block;
+    margin: 15px auto;
     padding: 10px 20px; /* ボタンのパディングを設定 */
     font-size: 16px; /* ボタンのフォントサイズを設定 */
     border-radius: 5px; /* ボタンの角丸を設定 */
-    background-color: royalblue; /* ボタンの背景色を設定 */
+    background-color: #ff4da1; /* ボタンの背景色を設定 */
     color: #fff; /* ボタンのテキスト色を設定 */
-    border: none; /* ボタンの枠線をなくす */
+    border: 1px solid #000; /* ボタンの枠線をなくす */
     cursor: pointer; /* ボタンにカーソルをポインターに設定 */
 }
 
 .editForm .submitButton:hover {
-    background-color: #5679e3; /* ホバー時の背景色を設定 */
+    background-color: #ff3399; /* ホバー時の背景色を設定 */
 }

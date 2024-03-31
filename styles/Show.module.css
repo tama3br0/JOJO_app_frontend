@@ -8,16 +8,19 @@
     margin-top: 30px;
 }
 
+.imageOnly {
+    height: 350px;
+}
+
 .postContainer {
     border-radius: 3px;
-    margin-top: 20px;
+    margin: 10px auto;
     background-color: #fff;
-    width: 600px;
+    width: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 10px;
-    height: 650px;
+    height: 480px;
 }
 
 .postTitle {
@@ -40,7 +43,7 @@
 }
 
 .btnContainer {
-    display: flexbox;
+    text-align: center;
 }
 
 .btnEdit,
